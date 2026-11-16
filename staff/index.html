@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="2027 Plan">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="theme-color" content="#F5F0E6">
+<link rel="apple-touch-icon" sizes="180x180" href="../icons/app-icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../icons/app-icon-192.png">
+<link rel="manifest" href="manifest.webmanifest">
+<title>2027 Plan · Cross Roads staff</title>
+<!--
+  Home-screen launcher for the STAFF deployment.
+  Why not a frame: the staff link needs the visitor's Google sign-in, and Safari blocks Google's
+  sign-in cookies inside another site's frame. So this page opens the staff link directly.
+  From a home-screen icon, iOS shows the staff page in its in-app Safari sheet (it shares the
+  Safari sign-in, and has a small "Done" bar at the top). "Done" comes back here; tap the button to reopen.
+  Setup: paste the staff Web app URL below. See DEPLOY.md section 7.
+-->
+<style>
+  html,body{margin:0;min-height:100%;background:#F5F0E6;color:#1d232a;font:16px/1.45 system-ui,-apple-system,sans-serif}
+  main{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:32px 24px;text-align:center}
+  img{width:120px;height:120px;border-radius:27px;box-shadow:0 8px 28px rgba(0,0,0,.14)}
+  h1{font:600 24px/1.2 Georgia,serif;margin:0}
+  p{margin:0;color:#5f6b74;max-width:320px}
+  a.go{display:inline-block;background:#1d232a;color:#fff;text-decoration:none;font-weight:600;padding:13px 26px;border-radius:999px}
+</style>
+</head>
+<body>
+<main>
+  <img src="../icons/app-icon-512.png" alt="">
+  <h1>2027 Planning Wheel</h1>
+  <p id="msg">Opening the staff planning wheel…</p>
+  <a class="go" id="go" href="#">Open the planning wheel</a>
+  <p style="font-size:13px">Sign in with your @crbclawrenceville.org Google account if asked.</p>
+</main>
+<script>
+  var STAFF_EXEC_URL = 'https://script.google.com/a/macros/crbclawrenceville.org/s/AKfycby3ek9VcdXHxdp_nDgXZ2waQ6OjGP2Hoqf37flbLK0qLAvv3DhvtirV0lpj2kY-4YhO/exec';   // ends in /exec
+  var ok = /^https:\/\/script\.google\.com\/(a\/macros\/[^/]+|macros)\/s\/[^/]+\/exec$/.test(STAFF_EXEC_URL);
+  var go = document.getElementById('go');
+  if (!ok) {
+    document.getElementById('msg').textContent = 'This page isn’t set up yet: paste the staff web app link into staff/index.html.';
+    go.style.display = 'none';
+  } else {
+    go.href = STAFF_EXEC_URL + (location.hash || '');
+    // Open once per launch; after "Done", the button stays here so it doesn't loop.
+    if (!sessionStorage.getItem('pw-opened')) { sessionStorage.setItem('pw-opened', '1'); location.href = go.href; }
+  }
+</script>
+</body>
+</html>

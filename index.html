@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="2027 Plan">
+<meta name="theme-color" content="#F5F0E6">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/app-icon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/app-icon-192.png">
+<link rel="icon" type="image/svg+xml" href="icons/app-icon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<title>2027 Plan · Cross Roads</title>
+<!--
+  Home-screen wrapper for the VIEW-ONLY ("Anyone") deployment: a real app window with the wheel icon.
+  The page itself still comes from Apps Script, framed with ?embed=1.
+  Staff use staff/index.html instead (Google sign-in can't happen inside a frame on iPhone/iPad).
+  Setup: paste the view-only Web app URL below, then host this folder (e.g. GitHub Pages). See DEPLOY.md section 7.
+-->
+<style>
+  html,body{margin:0;height:100%;background:#F5F0E6}
+  iframe{position:fixed;inset:0;width:100%;height:100%;border:0}
+  .msg{font:16px system-ui,-apple-system,sans-serif;padding:40px 24px;color:#5f6b74;text-align:center}
+</style>
+</head>
+<body>
+<script>
+  var VIEW_ONLY_EXEC_URL = 'https://script.google.com/a/macros/crbclawrenceville.org/s/AKfycbweeun140xMDT6WwWgpSV7tpROKGXURbnq-AO9GnUs-zQBkHYxUFLlAyH0jV_32Fxkq/exec';
+  if (!/^https:\/\/script\.google\.com\/(a\/macros\/[^/]+|macros)\/s\/[^/]+\/exec$/.test(VIEW_ONLY_EXEC_URL)) {
+    document.write('<p class="msg">This page isn’t set up yet: paste the view-only web app link into index.html.</p>');
+  } else {
+    var f = document.createElement('iframe');
+    f.title = 'Cross Roads 2027 planning wheel';
+    f.src = VIEW_ONLY_EXEC_URL + '?view=public&embed=1' + (location.hash || '');
+    document.body.appendChild(f);
+  }
+</script>
+</body>
+</html>
