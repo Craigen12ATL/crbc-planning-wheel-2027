@@ -7,11 +7,17 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="2027 Plan">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
-<meta name="theme-color" content="#F5F0E6">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#15181C" media="(prefers-color-scheme: dark)">
+<meta name="color-scheme" content="light dark">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../icons/app-icon-180.png">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="../icons/app-icon-192.png">
+<link rel="icon" type="image/svg+xml" href="../icons/app-icon.svg">
 <link rel="manifest" href="manifest.webmanifest">
-<title>2027 Plan · Cross Roads staff</title>
+<title>Cross Roads 2027 Planning Wheel (Staff)</title>
 <!--
   Home-screen launcher for the STAFF deployment.
   Why not a frame: the staff link needs the visitor's Google sign-in, and Safari blocks Google's
@@ -21,11 +27,12 @@
   Setup: paste the staff Web app URL below. See DEPLOY.md section 7.
 -->
 <style>
-  html,body{margin:0;min-height:100%;background:#F5F0E6;color:#1d232a;font:16px/1.45 system-ui,-apple-system,sans-serif}
+  html,body{margin:0;min-height:100%;background:#FFFFFF;color:#1d232a;font:16px/1.45 system-ui,-apple-system,sans-serif}
   main{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:32px 24px;text-align:center}
   img{width:120px;height:120px;border-radius:27px;box-shadow:0 8px 28px rgba(0,0,0,.14)}
   h1{font:600 24px/1.2 Georgia,serif;margin:0}
   p{margin:0;color:#5f6b74;max-width:320px}
+  @media (prefers-color-scheme: dark){html,body{background:#15181C;color:#ecebe7}p{color:#a3acb3!important}a.go{background:#ecebe7!important;color:#15181C!important}}
   a.go{display:inline-block;background:#1d232a;color:#fff;text-decoration:none;font-weight:600;padding:13px 26px;border-radius:999px}
 </style>
 </head>
